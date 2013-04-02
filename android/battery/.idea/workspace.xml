@@ -17,8 +17,8 @@
     <ignored path=".idea/workspace.xml" />
     <file path="$PROJECT_DIR$/res/values/strings.xml" changelist="5ce2d873-88b6-43db-a36e-901b891487cb" time="1364907324391" ignored="false" />
     <file path="$PROJECT_DIR$/.idea/compiler.xml" changelist="5ce2d873-88b6-43db-a36e-901b891487cb" time="1364907328415" ignored="false" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="5ce2d873-88b6-43db-a36e-901b891487cb" time="1364909856651" ignored="false" />
-    <file path="/MainActivity.java" changelist="5ce2d873-88b6-43db-a36e-901b891487cb" time="1364909790302" ignored="false" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="5ce2d873-88b6-43db-a36e-901b891487cb" time="1364910438752" ignored="false" />
+    <file path="/MainActivity.java" changelist="5ce2d873-88b6-43db-a36e-901b891487cb" time="1364910297668" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="5ce2d873-88b6-43db-a36e-901b891487cb" time="1364909837033" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +81,7 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/b2msolutions/elemez/examples/battery/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="0" selection-start="450" selection-end="450" vertical-scroll-proportion="0.2402464">
+            <state line="36" column="97" selection-start="1308" selection-end="1308" vertical-scroll-proportion="0.76386034">
               <folding />
             </state>
           </provider>
@@ -137,9 +137,9 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
-        <option value="$PROJECT_DIR$/src/com/b2msolutions/elemez/examples/battery/MainActivity.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/project.properties" />
+        <option value="$PROJECT_DIR$/src/com/b2msolutions/elemez/examples/battery/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -518,7 +518,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/b2msolutions/elemez/examples/battery/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="450" selection-end="450" vertical-scroll-proportion="0.2402464">
+        <state line="36" column="97" selection-start="1308" selection-end="1308" vertical-scroll-proportion="0.76386034">
           <folding />
         </state>
       </provider>

@@ -1,7 +1,17 @@
 # Battery Example
 An example android client that raises battery intents. 
 
-# Intent Definition
+# Secure System Settings
+The elemez client will make use of the following [secure system settings](http://developer.android.com/reference/android/provider/Settings.Secure.html) if present:
+
+* **"BATTERY_SERIAL_NUMBER"**: The serial number of the battery
+
+# Example Code Demonstrating Retrieval of System Settings
+``` java
+String battery_serial_number = Settings.Secure.getString(context.getContentResolver(), "BATTERY_SERIAL_NUMBER");
+``` 
+
+# Intent Definitions
 In order to raise a battery event to the android elemez client you must broadcast an intent using [sendBroadcast](http://developer.android.com/reference/android/content/Context.html#sendBroadcast(android.content.Intent\) ). 
 
 ## Battery Charge Cycle Count

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 
 public class MainActivity extends Activity {
@@ -34,6 +35,8 @@ public class MainActivity extends Activity {
         SharedPreferences.Editor editor = batteryDetails.edit();
         editor.putInt("cycleCount", cycleCount);
         editor.commit();
+
+        String android_id = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
         return cycleCount;
     }
 }
