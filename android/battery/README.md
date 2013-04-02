@@ -1,0 +1,24 @@
+# Battery Example
+An example android client that raises battery intents. 
+
+# Intent Definition
+In order to raise a battery event to the android elemez client you must broadcast an intent using [sendBroadcast](http://developer.android.com/reference/android/content/Context.html#sendBroadcast(android.content.Intent\) ). 
+
+## Battery Charge Cycle Count
+This intent should be raised when the charge cycle count changes and after each reboot.
+
+* Action: **elemez.intent.action.ACTION_BATTERY_CHARGE_CYCLE_COUNT_CHANGED**
+* Mandatory Extras:
+  * **elemez.intent.extra.TIMESTAMP**: a long representing the utc time of the charge cycle count changing in milliseconds since January 1, 1970 00:00:00 UTC (this is the same form as a call to [System.currentTimeMillis](http://developer.android.com/reference/java/lang/System.html#currentTimeMillis()) )
+  * **elemez.intent.extra.CYCLE_COUNT**: an integer representing the current charge cycle count.
+* Flags:
+  * **Intent.FLAG_INCLUDE_STOPPED_PACKAGES**: this flag must be set to ensure the elemez application is able to receive the intent under all circumstances.
+
+# Example Code
+``` java
+Intent intent = new Intent("elemez.intent.action.ACTION_BATTERY_CHARGE_CYCLE_COUNT_CHANGED");
+intent.putExtra("elemez.intent.extra.TIMESTAMP", System.currentTimeMillis());
+intent.putExtra("elemez.intent.extra.CYCLE_COUNT", 3);
+intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+context.sendBroadcast(intent);
+```        
