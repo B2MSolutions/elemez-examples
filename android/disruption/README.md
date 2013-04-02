@@ -2,7 +2,7 @@
 An example android client that raises disruption intents. 
 
 # Intent Definition
-In order to raise a disruption event to the android elemez client you must broadcast an intent using [sendBroadcast](http://developer.android.com/reference/android/content/Context.html#sendBroadcast(android.content.Intent) ). 
+In order to raise a disruption event to the android elemez client you must broadcast an intent using [sendBroadcast](http://developer.android.com/reference/android/content/Context.html#sendBroadcast(android.content.Intent\) ). 
 
 The intent is defined as follows:
 
