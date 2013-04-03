@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BatteryLow</string>
+    <string name="raiseIntent">Raise Intent</string>
+
+</resources>

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Disruption.iml" filepath="$PROJECT_DIR$/Disruption.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BatteryLow.iml" filepath="$PROJECT_DIR$/BatteryLow.iml" />
     </modules>
   </component>
 </project>
