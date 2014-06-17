@@ -11,3 +11,6 @@ An [example android client](https://github.com/B2MSolutions/elemez-examples/tree
 
 # Storage Example
 An [example android client](https://github.com/B2MSolutions/elemez-examples/tree/master/android/storage) that raises storage intents. 
+
+# Event Example
+An [example android client](https://github.com/B2MSolutions/elemez-examples/tree/master/android/event) that raises custom event intents. 
