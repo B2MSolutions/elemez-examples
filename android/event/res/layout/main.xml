@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+        >
+
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/editTextSender"
+            android:layout_gravity="left|center_vertical"
+            android:hint="Sender"/>
+
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/editTextSource"
+            android:layout_gravity="left|center_vertical"
+            android:hint="Source"/>
+
+
+    <EditText android:layout_width="fill_parent" android:layout_height="wrap_content"
+              android:id="@+id/editTextType" android:layout_gravity="left|center_vertical" android:hint="Type"/>
+
+    <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:stretchColumns="1">
+
+        <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+            <EditText android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:id="@+id/editTextKey1"
+                      android:layout_gravity="left|center_vertical"
+                      android:hint="Key1"/>
+
+            <EditText android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:id="@+id/editTextValue1"
+                      android:layout_gravity="left|center_vertical"
+                      android:hint="Value1"/>
+        </TableRow>
+        <TableRow android:layout_width="fill_parent"
+                  android:layout_height="fill_parent">
+
+            <EditText android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:id="@+id/editTextKey2"
+                      android:layout_gravity="left|center_vertical"
+                      android:hint="Key2"/>
+
+            <EditText android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:id="@+id/editTextValue2"
+                      android:layout_gravity="left|center_vertical"
+                      android:hint="Value2"/>
+        </TableRow>
+        <TableRow android:layout_width="fill_parent"
+                  android:layout_height="fill_parent">
+
+            <EditText android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:id="@+id/editTextKey3"
+                      android:layout_gravity="left|center_vertical"
+                      android:hint="Key3"/>
+
+            <EditText android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:id="@+id/editTextValue3"
+                      android:layout_gravity="left|center_vertical"
+                      android:hint="Value3"/>
+        </TableRow>
+    </TableLayout>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Raise Intent"
+            android:id="@+id/button"
+            android:layout_gravity="left|center_vertical"
+            android:singleLine="false"
+            android:onClick="raiseIntent"/>
+</LinearLayout>
+
