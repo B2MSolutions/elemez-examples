@@ -1,8 +1,8 @@
 # Elemez-ce disruption example
-## Raizing the disruption
+## Raising the disruption
 Start ElemezServiceHost.exe with the following parameters (in any order):
 
-`/p:sender=[SENDER] /p:source=[SOURCE] /p:userInitiated=[TRUE] /p:time=[DEVICE UTC TIME IN MILLISECONDS]"`
+`/p:sender=[SENDER] /p:source=[SOURCE] /p:userInitiated=[USER INITIATED] /p:time=[TIME]`
 
 - SENDER: Disruption sender
 - SOURCE: Disruption source
