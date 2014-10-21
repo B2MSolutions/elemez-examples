@@ -20,7 +20,7 @@
             var isUserInitiated = !cb_system.Checked;
             var time = DateTime.UtcNow.Ticks;
 
-            var arguments = string.Format("Disruption {0} {1} {2} {3}", senderValue, sourceValue, isUserInitiated, time);
+            var arguments = string.Format("Disruption /p:sender={0} /p:source={1} /p:userInitiated={2} /p:time={3}", senderValue, sourceValue, isUserInitiated, time);
             Process.Start(this.ElemezExecutablePath, arguments);
         }
 
