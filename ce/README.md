@@ -2,7 +2,7 @@
 ## Raising the disruption
 Start ElemezServiceHost.exe with the following parameters (in any order):
 
-`/p:sender=[SENDER] /p:source=[SOURCE] /p:userInitiated=[USER INITIATED] /p:time=[TIME]`
+`ElemezServiceHost.exe Disruption /p:sender=[SENDER] /p:source=[SOURCE] /p:userInitiated=[USER INITIATED] /p:time=[TIME]`
 
 - SENDER: Disruption sender
 - SOURCE: Disruption source
