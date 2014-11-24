@@ -16,7 +16,7 @@ An [example android client](https://github.com/B2MSolutions/elemez-examples/tree
 An [example android client](https://github.com/B2MSolutions/elemez-examples/tree/master/android/storage) that raises storage intents.
 
 # Storage Example for Windows CE
-An [example windows ce client](https://github.com/B2MSolutions/elemez-examples/tree/master/ce) that sets flash wear cycles.
+An [example windows ce client](https://github.com/B2MSolutions/elemez-examples/tree/master/ce/storage/Storage) that sets flash wear cycles.
 
 # Event Example
 An [example android client](https://github.com/B2MSolutions/elemez-examples/tree/master/android/event) that raises custom event intents.
@@ -25,4 +25,4 @@ An [example android client](https://github.com/B2MSolutions/elemez-examples/tree
 An [example windows ce client](https://github.com/B2MSolutions/elemez-examples/tree/master/ce) that raises a custom event.
 
 # Group for Windows CE
-An [example windows ce client](https://github.com/B2MSolutions/elemez-examples/tree/master/ce) that sets a group.
+An [example windows ce client](https://github.com/B2MSolutions/elemez-examples/tree/master/ce/groups/Group) that sets a group.
