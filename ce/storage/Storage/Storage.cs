@@ -16,7 +16,7 @@
         {
             try
             {
-                var flashWearCycles = int.Parse(flashWearCyclesTextBox.Text);
+                var flashWearCycles = uint.Parse(flashWearCyclesTextBox.Text);
                 using (var subKey = Registry.LocalMachine.CreateSubKey(@"Software\elemezIntegration\"))
                 {
                     subKey.SetValue("EFWN", flashWearCycles, RegistryValueKind.DWord);
@@ -26,7 +26,7 @@
             }
             catch (Exception)
             {
-                MessageBox.Show("Flash wear cycles count should be an integer value");
+                MessageBox.Show("Flash wear cycles count should be a positive integer value");
             }
         }
     }
