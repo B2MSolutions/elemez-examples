@@ -2,7 +2,9 @@
 An example ce client that set battery cycle count value. 
 
 # Registry Key Definitions
-Path: "Software\elemezIntegration"
+Key: HKEY_LOCAL_MACHINE
+
+Path: "Software\ElemezIntegration"
 
 Value: "battery_charge_cycle_count"
 
