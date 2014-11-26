@@ -2,7 +2,9 @@
 An example ce client that set group value. 
 
 # Registry Key Definitions
-Path: "Software\elemezIntegration"
+Key: HKEY_LOCAL_MACHINE
+
+Path: "Software\ElemezIntegration"
 
 Value: "Group"
 
