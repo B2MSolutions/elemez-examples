@@ -26,3 +26,6 @@ An [example windows ce client](https://github.com/B2MSolutions/elemez-examples/t
 
 # Group for Windows CE
 An [example windows ce client](https://github.com/B2MSolutions/elemez-examples/tree/master/ce/groups/Group) that sets a group.
+
+# Battery Cycle Count Example for Windows CE
+An [example windows ce client](https://github.com/B2MSolutions/elemez-examples/tree/master/ce/BatteryCycleCount) that sets a battery cycle count.
