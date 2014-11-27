@@ -17,7 +17,7 @@
             try
             {
                 var flashWearCycles = uint.Parse(flashWearCyclesTextBox.Text);
-                using (var subKey = Registry.LocalMachine.CreateSubKey(@"Software\elemezIntegration\"))
+                using (var subKey = Registry.LocalMachine.CreateSubKey(@"Software\ElemezIntegration\"))
                 {
                     subKey.SetValue("EFWN", flashWearCycles, RegistryValueKind.DWord);
                 }

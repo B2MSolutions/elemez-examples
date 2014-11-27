@@ -1,23 +1,23 @@
-﻿namespace Group
+﻿namespace BatteryCycleCount
 {
     using System;
     using System.Windows.Forms;
-
     using Microsoft.Win32;
 
-    public partial class Group : Form
+    public partial class Main : Form
     {
-        public Group()
+        public Main()
         {
             InitializeComponent();
         }
-
-        private void changeGroupButton_Click(object sender, EventArgs e)
+        
+        private void Save_Click(object sender, EventArgs e)
         {
-            string group = groupTextBox.Text;
+            int cycleCount = int.Parse(cycleCountTextBox.Text);
+
             using (RegistryKey subKey = Registry.LocalMachine.CreateSubKey(@"Software\ElemezIntegration\"))
             {
-                subKey.SetValue("Group", group, RegistryValueKind.String);
+                subKey.SetValue("battery_charge_cycle_count", cycleCount, RegistryValueKind.DWord);
             }
 
             MessageBox.Show("Saved");
