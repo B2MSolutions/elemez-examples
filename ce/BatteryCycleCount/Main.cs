@@ -15,7 +15,7 @@
         {
             int cycleCount = int.Parse(cycleCountTextBox.Text);
 
-            using (RegistryKey subKey = Registry.LocalMachine.CreateSubKey(@"Software\elemezIntegration\"))
+            using (RegistryKey subKey = Registry.LocalMachine.CreateSubKey(@"Software\ElemezIntegration\"))
             {
                 subKey.SetValue("battery_charge_cycle_count", cycleCount, RegistryValueKind.DWord);
             }
