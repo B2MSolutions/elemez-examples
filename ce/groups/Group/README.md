@@ -16,7 +16,7 @@ In order to raise a group changed event to the ce elemez client you must change 
 # Example Code
 ``` c#
  string group = groupTextBox.Text;
- using (RegistryKey subKey = Registry.LocalMachine.CreateSubKey(@"Software\elemezIntegration\"))
+ using (RegistryKey subKey = Registry.LocalMachine.CreateSubKey(@"Software\ElemezIntegration\"))
  {
   subKey.SetValue("Group", group, RegistryValueKind.String);
  }
