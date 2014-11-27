@@ -15,7 +15,7 @@
         private void changeGroupButton_Click(object sender, EventArgs e)
         {
             string group = groupTextBox.Text;
-            using (RegistryKey subKey = Registry.LocalMachine.CreateSubKey(@"Software\elemezIntegration\"))
+            using (RegistryKey subKey = Registry.LocalMachine.CreateSubKey(@"Software\ElemezIntegration\"))
             {
                 subKey.SetValue("Group", group, RegistryValueKind.String);
             }
