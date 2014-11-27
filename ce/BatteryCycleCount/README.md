@@ -16,7 +16,7 @@ In order to raise a battery cycle count changed event to the ce elemez client yo
 # Example Code
 ``` c#
  int cycleCount = int.Parse(cycleCountTextBox.Text);
- using (RegistryKey subKey = Registry.LocalMachine.CreateSubKey(@"Software\elemezIntegration\"))
+ using (RegistryKey subKey = Registry.LocalMachine.CreateSubKey(@"Software\ElemezIntegration\"))
  {
   subKey.SetValue("battery_charge_cycle_count", cycleCount, RegistryValueKind.DWord);
  }
