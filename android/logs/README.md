@@ -3,7 +3,7 @@ An example android client that upload logs intents.
 
 # Intent Definitions
 ## Request Logs
-In order to raise a log file to the android elemez client you must response to elemez log request with an intent specifying logs folder path.
+In order to upload log files through android elemez client you must response to elemez log request with an intent specifying logs folder path.
 
 Logs request intent brodcased by elemez is defined as follows:
 
