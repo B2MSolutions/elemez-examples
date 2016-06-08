@@ -2,6 +2,7 @@
   function getDisruptions(callback) {
     var apigClient = apigClientFactory.newClient({apiKey: localStorage.elemezKey}); //prod prod
     var params = {
+      'x-api-key': localStorage.elemezKey,
       token: localStorage.elemezToken,
       from: moment.utc().subtract(15, 'days').valueOf(),
       to: moment.utc().valueOf()

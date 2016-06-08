@@ -39,8 +39,8 @@
     <script type="text/javascript" src="/js/utils.js"></script>
     <script type="text/javascript" src="/js/tokens.js"></script>
     <script type="text/javascript" src="/js/metric-status.js"></script>
-    <script type="text/javascript" src="/js/index.js"></script>
-    <link rel="stylesheet" href="/css/index.css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" src="/js/battery-low.js"></script>
+    <link rel="stylesheet" href="/css/battery-low.css" media="screen" title="no title" charset="utf-8">
 
     <title>Elemez Public API</title>
   </head>
@@ -53,6 +53,8 @@
     </div>
     <div class="uk-container uk-container-center">
       <div class="uk-grid">
+        <!-- <h1 class="uk-h1 uk-width-1-1 uk-grid-margin">Elemez Public API</h1> -->
+
         <div class="uk-width-medium-1-4 uk-grid-margin">
           <ul class="uk-nav uk-nav-side">
             <li class="uk-nav-header">Elemez endpoints</li>
@@ -103,19 +105,16 @@
 
         <div class="uk-width-medium-3-4 uk-hidden main-section">
           <article class="uk-article">
-            <h1 class="uk-article-title">Disruptions</h1>
+            <h1 class="uk-article-title">Low Battery</h1>
             <p class="uk-article-lead">
-              Different types of disruptions from devices
+              Battery low events received from devices
               <br>
             <p class="uk-text-bold uk-text-success">
-              https://services.elemez.com/disruptions?from={{timestamp}}&to={{timestamp}}
+              https://services.elemez.com/battery/low?from={{timestamp}}&to={{timestamp}}
             </p>
             </p>
             <p>
-              This API from Elemez will return the total number of disruptions that have happened across all of your devices over the specificed time period.
-            </p>
-            <p>
-              You will be provided with the total number of disruptions per day over the time range, the mean, the standard deviation, and a measure of how much the latest value deviates from the mean.
+              Battery low description
             </p>
 
             <hr class="uk-article-divider">
@@ -129,7 +128,7 @@
             <br>
             <br>
 
-            <canvas id="disruptionsChart" width="100" height="30"></canvas>
+            <canvas id="batteryLowsChart" width="100" height="30"></canvas>
             <br>
             <br>
             <div class="uk-button-dropdown uk-dropdown-close" data-uk-dropdown="{mode: 'click'}">
@@ -196,14 +195,14 @@
             </div>
 
             <p>
-              Besides the trend values, the disruptions API also provides the following values:
+              Besides the trend values, the low battery API also provides the following values:
               <dl class="uk-description-list-horizontal">
                 <dt>mean</dt>
                 <dd class="uk-margin-bottom">Arithmetic mean of the daily trend values (excluding the last day of the period)</dd>
                 <dt>stddev</dt>
                 <dd class="uk-margin-bottom">Sample standard deviation of the daily trend values (excluding the last day of the period)</dd>
                 <dt>total</dt>
-                <dd class="uk-margin-bottom">Number of disruptions on the last day of the time range (usually current day)</dd>
+                <dd class="uk-margin-bottom">Number of low battery events on the last day of the time range (usually current day)</dd>
                 <dt>sigma</dt>
                 <dd>Signed integer indicating how many standard deviations the latest value deviates from the mean of the previous trend (rounded towards zero)</dd>
               </dl>
@@ -217,7 +216,7 @@
               The sigma tells you how many standard deviations the latest value is from the mean. If the sigma value is high then the difference from the mean is also high. This value is supplied as a whole number that is rounded towards zero.
             </p>
             <p>
-              We can use sigma value to show if there are any problems with disruptions (this is the live data from elemez servers):
+              We can use sigma value to show if there are any problems with low battery events (this is the live data from elemez servers):
               <div class="uk-panel uk-panel-box">
                 <div class="uk-panel-badge uk-badge uk-badge-danger">LIVE</div>
                 <h3 class="uk-panel-title">All data is live</h3>
@@ -232,7 +231,7 @@
             </p>
             <h4>Mean</h4>
             <p>
-              The mean value is a measure of the number of disruptions you see on an average day for the range selected. The mean is calculated for the selected range minus the last day of that range, which allows you to compare if the value for the latest day is different to the mean of the days before.
+              The mean value is a measure of the number of low battery events you see on an average day for the range selected. The mean is calculated for the selected range minus the last day of that range, which allows you to compare if the value for the latest day is different to the mean of the days before.
             </p>
             <h4>Standard deviation</h4>
             <p>
@@ -240,7 +239,7 @@
             </p>
             <h4>Last Value</h4>
             <p>
-              The Last Value is the number of disruptions on the last day of the selected range returned from the API. If you have chosen a date range which includes today, this will return the number of disruptions that have occurred today at the time of the request. As this is real time data, this figure is subject to change if the request is repeated or resent.
+              The Last Value is the number of low battery events on the last day of the selected range returned from the API. If you have chosen a date range which includes today, this will return the number of low battery events that have occurred today at the time of the request. As this is real time data, this figure is subject to change if the request is repeated or resent.
             </p>
 
 
@@ -265,18 +264,18 @@
             <div>
               <pre>
                 <code class="javascript">
-  function getDisruptions(callback) {
-    var apigClient = apigClientFactory.newClient({apiKey: "elemez key value");
+  function getBatteryLowEvents(callback) {
+    var apigClient = apigClientFactory.newClient({apiKey: 'elemez key value'});
     var params = {
-      'x-api-key': "elemez key value", 
-      token: "elemez token value",
+      'x-api-key': 'elemez key value',
+      token: 'elemez token value',
       from: moment.utc().subtract(15, 'days').valueOf(),
       to: moment.utc().valueOf()
     };
     var body = {};
     var additionalParams = {};
 
-    apigClient.disruptionsGet(params, body, additionalParams)
+    apigClient.batteryLowGet(params, body, additionalParams)
       .then(result => callback(result)).catch(result => {
         console.log("ERROR: ", result);
       });
