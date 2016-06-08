@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+    <!-- Public API SDK !-->
+    <script type="text/javascript" src="/apiGateway-js-sdk/lib/axios/dist/axios.standalone.js"></script>
+    <script type="text/javascript" src="/apiGateway-js-sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+    <script type="text/javascript" src="/apiGateway-js-sdk/lib/CryptoJS/rollups/sha256.js"></script>
+    <script type="text/javascript" src="/apiGateway-js-sdk/lib/CryptoJS/components/hmac.js"></script>
+    <script type="text/javascript" src="/apiGateway-js-sdk/lib/CryptoJS/components/enc-base64.js"></script>
+    <script type="text/javascript" src="/apiGateway-js-sdk/lib/url-template/url-template.js"></script>
+    <script type="text/javascript" src="/apiGateway-js-sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+    <script type="text/javascript" src="/apiGateway-js-sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+    <script type="text/javascript" src="/apiGateway-js-sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+    <script type="text/javascript" src="/apiGateway-js-sdk/lib/apiGatewayCore/utils.js"></script>
+    <script type="text/javascript" src="/apiGateway-js-sdk/apigClient.js"></script>
+
+    <!-- third-party libs !-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+    <!-- uikit framework for html and css !-->
+    <link rel="stylesheet" href="/thirdparty/uikit/css/uikit.min.css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" src="/thirdparty/uikit/js/uikit.min.js"></script>
+
+    <!-- json prettifier !-->
+    <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/agate.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
+
+    <!-- charting library !-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+
+    <!-- lodash !-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
+
+    <!-- our script and stylesheet !-->
+    <script type="text/javascript" src="/utils.js"></script>
+    <script type="text/javascript" src="/tokens.js"></script>
+    <script type="text/javascript" src="/metric-status.js"></script>
+    <script type="text/javascript" src="/index.js"></script>
+    <link rel="stylesheet" href="/index.css" media="screen" title="no title" charset="utf-8">
+
+    <title>Elemez Public API</title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="uk-container uk-container-center">
+        <img src="https://elemez.com/img/banner__logo@2x.png" width="100px" alt="Elemez" />
+        <a class="foget-tokens-link" href="javascript:void(0)">Forget tokens</a>
+      </div>
+    </div>
+    <div class="uk-container uk-container-center">
+      <div class="uk-grid">
+        <!-- <h1 class="uk-h1 uk-width-1-1 uk-grid-margin">Elemez Public API</h1> -->
+
+        <div class="uk-width-medium-1-4 uk-grid-margin">
+          <ul class="uk-nav uk-nav-side">
+            <li class="uk-nav-header">Elemez endpoints</li>
+            <li>
+              <a href="#">
+                Disruptions
+                <div>Different types of disruptions from devices</div>
+              </a>
+            </li>
+            <li class="uk-nav-divider"></li>
+            <li>
+              <a href="#">
+                Data
+                <div>Mobile and WiFi traffic from devices</div>
+              </a>
+            </li>
+            <li class="uk-nav-divider"></li>
+            <li>
+              <a href="#">
+                Low Battery Events
+                <div>Events from a device about battery status</div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="uk-width-medium-3-4 uk-grid-margin uk-hidden tokens-form">
+          <h2>Elemez demo</h2>
+          <hr class="uk-article-divider">
+          <form class="uk-form uk-form-horizontal">
+            <div class="uk-form-row">
+                <label class="uk-form-label" for="form-h-it">API Key</label>
+                <div class="uk-form-controls">
+                    <input class="uk-width-5-6 elemez-key" type="text" id="form-h-it" placeholder="Key">
+                </div>
+            </div>
+            <div class="uk-form-row">
+                <label class="uk-form-label" for="form-h-it">API Token</label>
+                <div class="uk-form-controls">
+                    <input class="uk-width-5-6 elemez-token" type="text" id="form-h-it" placeholder="Token">
+                </div>
+            </div>
+            <div class="uk-form-row">
+              <button class="uk-button uk-push-5-6 submit-tokens-button" onclick="elemez.tokens.saveTokens()">Enter</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="uk-width-medium-3-4 uk-hidden main-section">
+          <article class="uk-article">
+            <h1 class="uk-article-title">Disruptions</h1>
+            <p class="uk-article-lead">
+              Different types of disruptions from devices
+              <br>
+            <p class="uk-text-bold uk-text-success">
+              https://services.elemez.com/disruptions?from={{timestamp}}&to={{timestamp}}
+            </p>
+            </p>
+            <p>
+              This API from Elemez will return the total number of disruptions that have happened across all of your devices over the specificed time period.
+            </p>
+            <p>
+              You will be provided with the total number of disruptions per day over the time range, the mean, the standard deviation, and a measure of how much the latest value deviates from the mean.
+            </p>
+
+            <hr class="uk-article-divider">
+            <h2>Charts</h2>
+
+            <div class="uk-panel uk-panel-box">
+              <div class="uk-panel-badge uk-badge uk-badge-danger">LIVE</div>
+              <h3 class="uk-panel-title">All data is live</h3>
+              All data that you see on this page have been received from Elemez servers
+            </div>
+            <br>
+            <br>
+
+            <canvas id="disruptionsChart" width="100" height="30"></canvas>
+            <br>
+            <br>
+            <div class="uk-button-dropdown uk-dropdown-close" data-uk-dropdown="{mode: 'click'}">
+              <button type="uk-button">Select chart type</button>
+              <div class="uk-dropdown uk-dropdown-bottom">
+                <ul class="uk-nav uk-nav-dropdown">
+                  <li><a href="javascript:void(0)" onclick="elemez.changeChartType('line')">Line</a></li>
+                  <li><a href="javascript:void(0)" onclick="elemez.changeChartType('bar')">Bar</a></li>
+                </ul>
+              </div>
+            </div>
+
+
+            <hr class="uk-article-divider">
+            <h2>Other values</h2>
+
+            <div class="uk-panel uk-panel-box">
+              <div class="uk-panel-badge uk-badge uk-badge-danger">LIVE</div>
+              <h3 class="uk-panel-title">All data is live</h3>
+              All data that you see on this page have been received from Elemez servers
+            </div>
+            <div class="uk-block other-values">
+              <div class="uk-container">
+                <h3>Example</h3>
+                <div class="uk-grid uk-grid-match">
+                  <div class="uk-width-medium-1-4 uk-row-first">
+                    <div class="uk-panel">
+                      <p>
+                        <span id="stddev"></span>
+                        <br>
+                        Stddev
+                      </p>
+                    </div>
+                  </div>
+                  <div class="uk-width-medium-1-4">
+                    <div class="uk-panel">
+                      <p>
+                        <span id="mean"></span>
+                        <br>
+                        Mean
+                      </p>
+                    </div>
+                  </div>
+                  <div class="uk-width-medium-1-4">
+                    <div class="uk-panel">
+                      <p>
+                        <span id="total"></span>
+                        <br>
+                        Today
+                      </p>
+                    </div>
+                  </div>
+                  <div class="uk-width-medium-1-4">
+                    <div class="uk-panel">
+                      <p>
+                        <span id="sigma"></span>
+                        <br>
+                        Sigma
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              Besides the trend values, the disruptions API also provides the following values:
+              <dl class="uk-description-list-horizontal">
+                <dt>mean</dt>
+                <dd class="uk-margin-bottom">Arithmetic mean of the daily trend values (excluding the last day of the period)</dd>
+                <dt>stddev</dt>
+                <dd class="uk-margin-bottom">Sample standard deviation of the daily trend values (excluding the last day of the period)</dd>
+                <dt>total</dt>
+                <dd class="uk-margin-bottom">Number of disruptions on the last day of the time range (usually current day)</dd>
+                <dt>sigma</dt>
+                <dd>Signed integer indicating how many standard deviations the latest value deviates from the mean of the previous trend (rounded towards zero)</dd>
+              </dl>
+            </p>
+
+
+            <hr class="uk-article-divider">
+            <h2>How other values can be used</h2>
+            <h4>Sigma</h4>
+            <p>
+              The sigma tells you how many standard deviations the latest value is from the mean. If the sigma value is high then the difference from the mean is also high. This value is supplied as a whole number that is rounded towards zero.
+            </p>
+            <p>
+              We can use sigma value to show if there are any problems with disruptions (this is the live data from elemez servers):
+              <div class="uk-panel uk-panel-box">
+                <div class="uk-panel-badge uk-badge uk-badge-danger">LIVE</div>
+                <h3 class="uk-panel-title">All data is live</h3>
+                All data that you see on this page have been received from Elemez servers
+              </div>
+              <blockquote>
+                <p>
+                  <i class="uk-icon-large metric-status"></i>
+                  <span class="metric-message"></span>
+                </p>
+              </blockquote>
+            </p>
+            <h4>Mean</h4>
+            <p>
+              The mean value is a measure of the number of disruptions you see on an average day for the range selected. The mean is calculated for the selected range minus the last day of that range, which allows you to compare if the value for the latest day is different to the mean of the days before.
+            </p>
+            <h4>Standard deviation</h4>
+            <p>
+              The standard deviation represents the degree of variability present within a range of data when compared to the mean. If the standard deviation is low, this indicates that the data is close to the mean and that the variation is low. If the standard deviation is high, then the data has a wide range of values and is further away from the mean value.
+            </p>
+            <h4>Last Value</h4>
+            <p>
+              The Last Value is the number of disruptions on the last day of the selected range returned from the API. If you have chosen a date range which includes today, this will return the number of disruptions that have occurred today at the time of the request. As this is real time data, this figure is subject to change if the request is repeated or resent.
+            </p>
+
+
+            <hr class="uk-article-divider">
+            <h2>Response</h2>
+            <p>
+              We used this response to populate all charts and panels on this page. You can see it if you click on the button below:
+            </p>
+            <button class="uk-button" data-uk-toggle="{target:'#response-example'}">Show response from a server</button>
+            <div id="response-example" class="uk-hidden">
+              <pre>
+                <code class="json response-json">
+                </code>
+              </pre>
+            </div>
+
+            <hr class="uk-article-divider">
+            <h2>Integration</h2>
+            <p>
+              Our API is easy to use, below is an example of code that we used to get data from our servers:
+            </p>
+            <div>
+              <pre>
+                <code class="javascript">
+  function getDisruptions(callback) {
+    var apigClient = apigClientFactory.newClient({apiKey: "elemez key value");
+    var params = {
+      token: "elemez token value",
+      from: moment.utc().subtract(15, 'days').valueOf(),
+      to: moment.utc().valueOf()
+    };
+    var body = {};
+    var additionalParams = {};
+
+    apigClient.disruptionsGet(params, body, additionalParams)
+      .then(result => callback(result)).catch(result => {
+        console.log("ERROR: ", result);
+      });
+  }
+                </code>
+              </pre>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer uk-hidden">
+      <div class="uk-panel uk-width-1-2 uk-container-center uk-text-center">
+        <img src="http://b2msolutions.com/wp-content/themes/twentyfourteen/images/footer-b2m-logo.png" alt="B2M Solutions" />
+        <p>
+          ©Copyright 2013-2016 Biz2Mobile Ltd. All Rights Reserved.
+        </p>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      window.elemez.start();
+      window.elemez.tokens.registerHandlers();
+    </script>
+  </body>
+</html>
