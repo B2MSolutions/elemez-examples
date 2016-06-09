@@ -17,7 +17,10 @@
 
   //---------------------CHARTS---------------------
   var currentChart = null;
+  var currentMeanChart = null;
+
   var chartData = null;
+  var percentageMeanChartData = null;
 
   var chartsTable = {
     line: showLineChart,
@@ -28,6 +31,43 @@
     currentChart.destroy();
     chartsTable[newType]();
   };
+
+  function showMeanBarChart() {
+    if (currentMeanChart) currentMeanChart.destroy();
+
+    var ctx = $("#disruptionsMeanChart");
+
+    currentMeanChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: _.map(percentageMeanChartData, 'x'),
+        datasets: [{
+          label: 'Relative number of disruptions',
+          data: _.map(percentageMeanChartData, 'y'),
+          backgroundColor: '#CCBFE8',
+          borderWidth: 2,
+          borderColor: "#7A60AE"
+        }]
+      },
+      options: {
+        scales: {
+          xAxes: [{
+            type: 'time',
+            time: {
+              tooltipFormat: "YYYY/MM/DD"
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              callback: function(value, index, values) {
+                return parseFloat(value.toFixed(2)) + "%";
+              }
+            }
+          }]
+        }
+      }
+    });
+  }
 
   function showBarChart() {
     if (currentChart) currentChart.destroy();
@@ -105,8 +145,15 @@
       chartData = _.map(disruptionsTrend.data.data.attributes.trend,
                         function(item) {return {x: item.utc, y: item.value};});
 
+      var mean = disruptionsTrend.data.data.attributes.mean;
+      percentageMeanChartData = _.map(disruptionsTrend.data.data.attributes.trend,
+                                      function(item) {
+                                        return {x: item.utc, y: (item.value / mean) * 100};
+                                      });
+
       populateOtherValues(disruptionsTrend);
-      chartsTable['bar']();
+      chartsTable['line']();
+      showMeanBarChart();
     });
   }
 
