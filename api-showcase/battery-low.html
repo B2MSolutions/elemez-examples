@@ -114,7 +114,10 @@
               </p>
             </p>
             <p>
-              Battery low description
+              This API from Elemez will return the number of low battery events across all of your devices over the specificed time period.
+            </p>
+            <p>
+              You will be provided with the number of battery-criticals, the mean, the standard deviation, and a measure of how much the latest value deviates from the mean.
             </p>
 
             <hr class="uk-article-divider">
@@ -216,7 +219,7 @@
               The sigma tells you how many standard deviations the latest value is from the mean. If the sigma value is high then the difference from the mean is also high. This value is supplied as a whole number that is rounded towards zero.
             </p>
             <p>
-              We can use sigma value to show if there are any problems with low battery events (this is the live data from elemez servers):
+              We can use the sigma value to show if more devices than usual are running low on battery:
               <div class="uk-panel uk-panel-box">
                 <div class="uk-panel-badge uk-badge uk-badge-danger">LIVE</div>
                 <h3 class="uk-panel-title">All data is live</h3>
