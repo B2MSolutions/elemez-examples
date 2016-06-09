@@ -1,7 +1,7 @@
 elemez.tokens = {
   registerHandlers: function() {
-    $('.submit-tokens-button').click(e => {this.saveTokens(); e.preventDefault();});
-    $('.foget-tokens-link').click(e => {this.forgetTokens(); e.preventDefault();});
+    $('.submit-tokens-button').click(function(e) {this.saveTokens(); e.preventDefault();});
+    $('.foget-tokens-link').click(function(e) {this.forgetTokens(); e.preventDefault();});
     $('.elemez-key').val(localStorage.elemezKey);
     $('.elemez-token ').val(localStorage.elemezToken);
   },

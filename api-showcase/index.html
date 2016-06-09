@@ -64,7 +64,7 @@
             </li>
             <li class="uk-nav-divider"></li>
             <li>
-              <a href="#">
+              <a href="/data.html">
                 Data
                 <div>Mobile and WiFi traffic from devices</div>
               </a>
@@ -107,9 +107,9 @@
             <p class="uk-article-lead">
               Different types of disruptions from devices
               <br>
-            <p class="uk-text-bold uk-text-success">
-              https://services.elemez.com/disruptions?from={{timestamp}}&to={{timestamp}}
-            </p>
+              <p class="uk-text-bold uk-text-success">
+                https://services.elemez.com/disruptions?from={{timestamp}}&to={{timestamp}}
+              </p>
             </p>
             <p>
               This API from Elemez will return the total number of disruptions that have happened across all of your devices over the specificed time period.
@@ -268,7 +268,7 @@
   function getDisruptions(callback) {
     var apigClient = apigClientFactory.newClient({apiKey: "elemez key value");
     var params = {
-      'x-api-key': "elemez key value", 
+      'x-api-key': "elemez key value",
       token: "elemez token value",
       from: moment.utc().subtract(15, 'days').valueOf(),
       to: moment.utc().valueOf()

@@ -11,9 +11,8 @@
     var additionalParams = {};
 
     apigClient.batteryLowGet(params, body, additionalParams)
-      .then(result => callback(result)).catch(result => {
-        console.log("ERROR: ", result);
-      });
+      .then(function(result) {callback(result);})
+      .catch(function(result) {console.log("ERROR: ", result);});
   }
 
   //---------------------CHARTS---------------------
@@ -97,16 +96,14 @@
     $('pre code').each(function(i, block) {
       hljs.highlightBlock(block);
     });
-    // hljs.highlightBlock($('.response-json')[0]);
 
     elemez.sigmaStatus.update(trend.data.data.attributes.sigma, "Low Battery Events level");
   }
 
   function fetchServerData() {
     getBatteryLows(function(batteryLows) {
-      console.log(JSON.stringify(batteryLows, ' ', 2));
       chartData = _.map(batteryLows.data.data.attributes.trend,
-                        (item) => ({x: item.utc, y: item.value}));
+                        function(item) {return {x: item.utc, y: item.value};});
 
       populateOtherValues(batteryLows);
       chartsTable['bar']();
