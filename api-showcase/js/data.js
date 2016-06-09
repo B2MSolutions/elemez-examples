@@ -47,6 +47,11 @@
         }]
       },
       options: {
+        tooltips: {
+          callbacks: {
+            label: function(item) { return humanData(item.yLabel); }
+          }
+        },
         scales: {
           xAxes: [{
             type: 'time',
@@ -57,7 +62,7 @@
           yAxes: [{
             ticks: {
               callback: function(value, index, values) {
-                return humanData(value);
+                return "  " + humanData(value);
               }
             }
           }]
@@ -81,6 +86,11 @@
         }]
       },
       options: {
+        tooltips: {
+          callbacks: {
+            label: function(item) { return humanData(item.yLabel); }
+          }
+        },
         scales: {
           xAxes: [{
             type: 'time',
@@ -91,7 +101,7 @@
           yAxes: [{
             ticks: {
               callback: function(value, index, values) {
-                return humanData(value);
+                return "  " + humanData(value);
               }
             }
           }]

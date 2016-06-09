@@ -50,6 +50,11 @@
         }]
       },
       options: {
+        tooltips: {
+          callbacks: {
+            label: function(item) { return parseFloat(item.yLabel.toFixed(2)) + "%"; }
+          }
+        },
         scales: {
           xAxes: [{
             type: 'time',
