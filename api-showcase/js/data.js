@@ -17,7 +17,10 @@
 
   //---------------------CHARTS---------------------
   var currentChart = null;
+  var currentMobileWifiChart = null;
   var chartData = null;
+  var chartMobileData = null;
+  var chartWifiData = null;
 
   var chartsTable = {
     line: showLineChart,
@@ -28,6 +31,75 @@
     currentChart.destroy();
     chartsTable[newType]();
   };
+
+  function showMobileWifiPie() {
+    var ctx = $("#mobileWifiPie");
+
+    console.log(chartMobileData);
+    var something = new Chart(ctx,{
+      type: 'pie',
+      data: {
+        labels: [
+          "Mobile today",
+          "WiFi today"
+        ],
+        datasets: [
+          {
+            data: [_.last(chartMobileData).y, _.last(chartWifiData).y,],
+            backgroundColor: [
+              "#97C7DC",
+              "#B69EE1"
+            ],
+            hoverBackgroundColor: [
+              "#6FB1B8",
+              "#7A60AE"
+            ]
+          }]
+      }
+    });
+  };
+
+  function showMobileWifiChart() {
+    var ctx = $("#mobileWifiChart");
+    currentMobileWifiChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          label: 'Mobile data',
+          data: chartMobileData,
+          backgroundColor: '#97C7DC',
+          borderColor: "#6FB1B8"
+        }, {
+          label: 'WiFi data',
+          data: chartWifiData,
+          backgroundColor: '#B69EE1',
+          borderColor: "#7A60AE"
+        }]
+      },
+      options: {
+        tooltips: {
+          callbacks: {
+            label: function(item) { return humanData(item.yLabel); }
+          }
+        },
+        scales: {
+          xAxes: [{
+            type: 'time',
+            time: {
+              tooltipFormat: "YYYY/MM/DD"
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              callback: function(value, index, values) {
+                return "  " + humanData(value);
+              }
+            }
+          }]
+        }
+      }
+    });
+  }
 
   function showBarChart() {
     if (currentChart) currentChart.destroy();
@@ -143,8 +215,16 @@
       chartData = _.map(data.data.data.attributes.total.trend,
                         function(item) {return {x: item.utc, y: item.value};});
 
+      chartMobileData = _.map(data.data.data.attributes.mobile.trend,
+                              function(item) {return {x: item.utc, y: item.value};});
+
+      chartWifiData = _.map(data.data.data.attributes.wifi.trend,
+                            function(item) {return {x: item.utc, y: item.value};});
+
       populateOtherValues(data);
       chartsTable['bar']();
+      showMobileWifiChart();
+      showMobileWifiPie();
     });
   }
 
