@@ -1,7 +1,7 @@
 elemez.tokens = {
   registerHandlers: function() {
-    $('.submit-tokens-button').click(function(e) {this.saveTokens(); e.preventDefault();});
-    $('.foget-tokens-link').click(function(e) {this.forgetTokens(); e.preventDefault();});
+    $('.submit-tokens-button').click(function(e) {this.saveTokens(); e.preventDefault();}.bind(this));
+    $('.foget-tokens-link').click(function(e) {this.forgetTokens(); e.preventDefault();}.bind(this));
     $('.elemez-key').val(localStorage.elemezKey);
     $('.elemez-token ').val(localStorage.elemezToken);
   },
@@ -25,7 +25,6 @@ elemez.tokens = {
 
       elemez.fetchServerData();
       this.changeTokensFormVisibility(false);
-      elemez.showMain();
     }
   },
   forgetTokens: function() {

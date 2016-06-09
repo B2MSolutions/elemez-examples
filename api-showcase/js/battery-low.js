@@ -101,9 +101,13 @@
   }
 
   function fetchServerData() {
+    elemez.showSpinner();
     getBatteryLows(function(batteryLows) {
       chartData = _.map(batteryLows.data.data.attributes.trend,
                         function(item) {return {x: item.utc, y: item.value};});
+
+      elemez.hideSpinner();
+      elemez.showMain();
 
       populateOtherValues(batteryLows);
       chartsTable['bar']();
@@ -113,16 +117,14 @@
   function start() {
     if(elemez.tokens.present()) {
       elemez.tokens.changeTokensFormVisibility(false);
-      elemez.changeVisibility('.main-section', true);
-      elemez.changeVisibility('.footer', true);
       fetchServerData();
     } else {
       elemez.tokens.changeTokensFormVisibility(true);
-      elemez.changeVisibility('.main-section', false);
-      elemez.changeVisibility('.footer', false);
     }
   }
 
+  window.elemez.showSpinner = _.partial(elemez.changeVisibility, '.spinner', true);
+  window.elemez.hideSpinner = _.partial(elemez.changeVisibility, '.spinner', false);
   window.elemez.hideMain = _.partial(elemez.changeVisibility, '.main-section, .footer', false);
   window.elemez.showMain = _.partial(elemez.changeVisibility, '.main-section, .footer', true);
   window.elemez.fetchServerData = fetchServerData;
