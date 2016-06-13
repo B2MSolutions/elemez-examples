@@ -1,10 +1,14 @@
 elemez.sigmaStatus = {
-  update: function(sigma, message, reverse) {
-    //should be updated for reverse
+  update: function(sigma, message, phrases) {
+    phrases = phrases || {};
+    var good = phrases.good || ' is good today';
+    var normal = phrases.normal || ' is normal today';
+    var bad = phrases.bad || ' is bad today';
+
     var statuses = {
-      good: {icon: 'uk-icon-thumbs-o-up', message: message + ' is good today'},
-      normal: {icon: 'uk-icon-balance-scale', message: message + ' is normal today'},
-      bad: {icon: 'uk-icon-warning', message: message + ' is bad today'}
+      good: {icon: 'uk-icon-thumbs-o-up', message: message + good},
+      normal: {icon: 'uk-icon-balance-scale', message: message + normal},
+      bad: {icon: 'uk-icon-warning', message: message + bad}
     };
 
     if (sigma > 1) {

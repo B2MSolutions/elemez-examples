@@ -207,7 +207,11 @@
       hljs.highlightBlock(block);
     });
 
-    elemez.sigmaStatus.update(trend.data.data.attributes.sigma, "Data consumption level");
+    elemez.sigmaStatus.update(trend.data.data.attributes.sigma, "", {
+      good: "Today's a good day for data usage",
+      normal: "Today's a normal day for data usage",
+      bad: "Today's a bad day for data usage"
+    });
   }
 
   function fetchServerData() {
