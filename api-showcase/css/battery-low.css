@@ -19,7 +19,7 @@ p {
     /*font-size: x-large;*/
 }
 
-#mean, #stddev, #sigma, #total {
+#mean, #stddev, #sigma, #total, #today {
     font-size: xx-large;
 }
 
