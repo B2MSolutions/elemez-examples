@@ -83,15 +83,33 @@ apigClientFactory.newClient = function (config) {
     
     
     
+    apigClient.batteryLowGet = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, ['from', 'x-api-key', 'token', 'to'], ['body']);
+        
+        var batteryLowGetRequest = {
+            verb: 'get'.toUpperCase(),
+            path: pathComponent + uritemplate('/battery/low').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['x-api-key', 'token', ]),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['from', 'to']),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(batteryLowGetRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
     apigClient.batteryLowPost = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['rid', 'os', 'mac', 'token', 'sn', 'scheme', 'id', 'version', 'body'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['rid', 'os', 'mac', 'x-api-key', 'token', 'sn', 'scheme', 'id', 'version', 'body'], ['body']);
         
         var batteryLowPostRequest = {
             verb: 'post'.toUpperCase(),
             path: pathComponent + uritemplate('/battery/low').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, ['rid', 'os', 'mac', 'token', 'sn', 'scheme', 'id', 'version', ]),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['rid', 'os', 'mac', 'x-api-key', 'token', 'sn', 'scheme', 'id', 'version', ]),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
@@ -101,15 +119,69 @@ apigClientFactory.newClient = function (config) {
     };
     
     
+    apigClient.batteryLowOptions = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var batteryLowOptionsRequest = {
+            verb: 'options'.toUpperCase(),
+            path: pathComponent + uritemplate('/battery/low').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(batteryLowOptionsRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.dataGet = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, ['from', 'x-api-key', 'token', 'to'], ['body']);
+        
+        var dataGetRequest = {
+            verb: 'get'.toUpperCase(),
+            path: pathComponent + uritemplate('/data').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['x-api-key', 'token', ]),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['from', 'to']),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(dataGetRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.dataOptions = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var dataOptionsRequest = {
+            verb: 'options'.toUpperCase(),
+            path: pathComponent + uritemplate('/data').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(dataOptionsRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
     apigClient.disruptionsGet = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['from', 'token', 'to'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['from', 'x-api-key', 'token', 'to'], ['body']);
         
         var disruptionsGetRequest = {
             verb: 'get'.toUpperCase(),
             path: pathComponent + uritemplate('/disruptions').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, ['token', ]),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['x-api-key', 'token', ]),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, ['from', 'to']),
             body: body
         };
@@ -122,18 +194,36 @@ apigClientFactory.newClient = function (config) {
     apigClient.disruptionsPost = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['rid', 'os', 'mac', 'token', 'sn', 'scheme', 'id', 'version', 'body'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['rid', 'os', 'mac', 'x-api-key', 'token', 'sn', 'scheme', 'id', 'version', 'body'], ['body']);
         
         var disruptionsPostRequest = {
             verb: 'post'.toUpperCase(),
             path: pathComponent + uritemplate('/disruptions').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, ['rid', 'os', 'mac', 'token', 'sn', 'scheme', 'id', 'version', ]),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['rid', 'os', 'mac', 'x-api-key', 'token', 'sn', 'scheme', 'id', 'version', ]),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
         return apiGatewayClient.makeRequest(disruptionsPostRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.disruptionsOptions = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var disruptionsOptionsRequest = {
+            verb: 'options'.toUpperCase(),
+            path: pathComponent + uritemplate('/disruptions').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(disruptionsOptionsRequest, authType, additionalParams, config.apiKey);
     };
     
     
@@ -158,12 +248,12 @@ apigClientFactory.newClient = function (config) {
     apigClient.trafficPost = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['rid', 'os', 'mac', 'token', 'sn', 'scheme', 'id', 'version', 'body'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['rid', 'os', 'mac', 'x-api-key', 'token', 'sn', 'scheme', 'id', 'version', 'body'], ['body']);
         
         var trafficPostRequest = {
             verb: 'post'.toUpperCase(),
             path: pathComponent + uritemplate('/traffic').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, ['rid', 'os', 'mac', 'token', 'sn', 'scheme', 'id', 'version', ]),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['rid', 'os', 'mac', 'x-api-key', 'token', 'sn', 'scheme', 'id', 'version', ]),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
@@ -176,12 +266,12 @@ apigClientFactory.newClient = function (config) {
     apigClient.utilizationUsedPost = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['rid', 'os', 'mac', 'token', 'sn', 'scheme', 'id', 'version', 'body'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['rid', 'os', 'mac', 'x-api-key', 'token', 'sn', 'scheme', 'id', 'version', 'body'], ['body']);
         
         var utilizationUsedPostRequest = {
             verb: 'post'.toUpperCase(),
             path: pathComponent + uritemplate('/utilization/used').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, ['rid', 'os', 'mac', 'token', 'sn', 'scheme', 'id', 'version', ]),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['rid', 'os', 'mac', 'x-api-key', 'token', 'sn', 'scheme', 'id', 'version', ]),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };

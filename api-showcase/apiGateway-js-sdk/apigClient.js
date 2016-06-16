@@ -155,6 +155,24 @@ apigClientFactory.newClient = function (config) {
     };
     
     
+    apigClient.dataPost = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, ['rid', 'os', 'mac', 'x-api-key', 'token', 'sn', 'scheme', 'id', 'version', 'body'], ['body']);
+        
+        var dataPostRequest = {
+            verb: 'post'.toUpperCase(),
+            path: pathComponent + uritemplate('/data').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['rid', 'os', 'mac', 'x-api-key', 'token', 'sn', 'scheme', 'id', 'version', ]),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(dataPostRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
     apigClient.dataOptions = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
@@ -227,39 +245,39 @@ apigClientFactory.newClient = function (config) {
     };
     
     
-    apigClient.timeGet = function (params, body, additionalParams) {
+    apigClient.utilizationGet = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, ['from', 'token', 'to'], ['body']);
+        
+        var utilizationGetRequest = {
+            verb: 'get'.toUpperCase(),
+            path: pathComponent + uritemplate('/utilization').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['token', ]),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['from', 'to']),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(utilizationGetRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.utilizationOptions = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
         apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
         
-        var timeGetRequest = {
-            verb: 'get'.toUpperCase(),
-            path: pathComponent + uritemplate('/time').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+        var utilizationOptionsRequest = {
+            verb: 'options'.toUpperCase(),
+            path: pathComponent + uritemplate('/utilization').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(timeGetRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.trafficPost = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, ['rid', 'os', 'mac', 'x-api-key', 'token', 'sn', 'scheme', 'id', 'version', 'body'], ['body']);
-        
-        var trafficPostRequest = {
-            verb: 'post'.toUpperCase(),
-            path: pathComponent + uritemplate('/traffic').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, ['rid', 'os', 'mac', 'x-api-key', 'token', 'sn', 'scheme', 'id', 'version', ]),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(trafficPostRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(utilizationOptionsRequest, authType, additionalParams, config.apiKey);
     };
     
     
@@ -278,6 +296,24 @@ apigClientFactory.newClient = function (config) {
         
         
         return apiGatewayClient.makeRequest(utilizationUsedPostRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.utilizationUsedOptions = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var utilizationUsedOptionsRequest = {
+            verb: 'options'.toUpperCase(),
+            path: pathComponent + uritemplate('/utilization/used').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(utilizationUsedOptionsRequest, authType, additionalParams, config.apiKey);
     };
     
 
