@@ -12,7 +12,11 @@
 
     apigClient.batteryLowGet(params, body, additionalParams)
       .then(function(result) {callback(result);})
-      .catch(function(result) {console.log("ERROR: ", result);});
+      .catch(function(result) {
+        elemez.hideSpinner();
+        elemez.tokens.badTokenOrKeyNotification();
+        elemez.tokens.forgetTokens();
+      });
   }
 
   //---------------------CHARTS---------------------

@@ -4,6 +4,7 @@ elemez.tokens = {
     $('.foget-tokens-link').click(function(e) {this.forgetTokens(); e.preventDefault();}.bind(this));
     $('.elemez-key').val(localStorage.elemezKey);
     $('.elemez-token ').val(localStorage.elemezToken);
+    $('.uk-alert-close.uk-close').click(function(e) {elemez.changeVisibility('.uk-alert', false); e.preventDefault();});
   },
 
   addTokensCallback: function(callback) {
@@ -33,6 +34,9 @@ elemez.tokens = {
 
     this.changeTokensFormVisibility(true);
     elemez.hideMain();
+  },
+  badTokenOrKeyNotification: function() {
+    elemez.changeVisibility('.uk-alert', true);
   }
 };
 
