@@ -227,7 +227,7 @@
       chartMobileData = _.map(data.data.data.attributes.mobile.trend,
                               function(item) {return {x: item.utc, y: item.value};});
 
-      chartWifiData = _.map(data.data.data.attributes.wifi.trend,
+      chartWifiData = _.map(data.data.data.attributes.other.trend,
                             function(item) {return {x: item.utc, y: item.value};});
 
       elemez.hideSpinner();
