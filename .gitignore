@@ -21,3 +21,8 @@ local.properties
 
 # VIM
 *.swp
+
+# VS
+.suo
+obj/
+bin/
