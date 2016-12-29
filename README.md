@@ -21,9 +21,6 @@ An [example windows ce client](https://github.com/B2MSolutions/elemez-examples/t
 # Event Example
 An [example android client](https://github.com/B2MSolutions/elemez-examples/tree/master/android/event) that raises custom event intents.
 
-# Event Example for Windows x86
-An [example x86 client](https://github.com/B2MSolutions/elemez-examples/tree/master/x86/ExternalEvent) that raises custom events.
-
 # Event Example for Windows CE
 An [example windows ce client](https://github.com/B2MSolutions/elemez-examples/tree/master/ce/event) that raises a custom event.
 
@@ -32,3 +29,9 @@ An [example windows ce client](https://github.com/B2MSolutions/elemez-examples/t
 
 # Battery Cycle Count Example for Windows CE
 An [example windows ce client](https://github.com/B2MSolutions/elemez-examples/tree/master/ce/BatteryCycleCount) that sets a battery cycle count.
+
+# Event Example for Windows x86
+An [example x86 client](https://github.com/B2MSolutions/elemez-examples/tree/master/x86/ExternalEvent) that raises custom events.
+
+# Disruption Example for Windows x86
+An [example x86 client](https://github.com/B2MSolutions/elemez-examples/tree/master/x86/Disruption) that raises disruption. 
